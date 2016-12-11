@@ -31,11 +31,6 @@ namespace Maze_cracker
     
     auto Terrain_builder::process_lines() -> Terrain_builder&
     {
-        for (const auto& line : lines_)
-        {
-            std::cout << line << '\n';
-        }
-        
         Sdl::Point point { };
         
         for (const auto& line : lines_)
@@ -56,7 +51,7 @@ namespace Maze_cracker
     auto Terrain_builder::finalize() const -> Terrain_data
     {
         return terrain_data_;
-    };
+    }
     
     auto Terrain_builder::calculate_wh() -> void
     {

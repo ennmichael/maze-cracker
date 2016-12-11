@@ -47,8 +47,6 @@ namespace Maze_cracker
             case 4:
                 return { 0, -1 };
             default:
-                std::cout << "current_point() with rotation_ "
-                          << rotation_ << '\n';
                 std::terminate();
                 return { };
         }
@@ -127,7 +125,7 @@ namespace Maze_cracker
     auto Path::rotate_back_direction() noexcept -> void
     {
         directions_.back().rotate();
-    };
+    }
     
     auto Path::pop_back_direction() noexcept -> void
     {
@@ -224,11 +222,9 @@ namespace Maze_cracker
             if (path.raw_vector().size() < results.back().size())
             {
                 results.clear();
-                std::cout << "Cleared\n.";
             }
             
             results.push_back(path.raw_vector());
-            std::cout << "Appended a new element.\n";
         }
     }
     
