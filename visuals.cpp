@@ -46,14 +46,13 @@ namespace Maze_cracker
         Sdl::Screen& screen,
         Sdl::Point draw_point,
         Sdl::Point snap,
-        SDL_Color color) -> void
+        SDL_Color color,
+        Sdl::Color_filling filling) -> void
     {
-        std::cout << draw_point.x << ", " << draw_point.y << '\n';
-        
         screen.add_draw(
             Sdl::make_rect(
                 draw_point * snap, 
                 snap.x, snap.y),
-            color, Sdl::Color_filling::Filled);
+            color, filling);
     }
 }

@@ -11,10 +11,6 @@ namespace Maze_cracker
     constexpr auto default_width = 400;
     constexpr auto default_height = 400;
     
-    // Actually, we should calculate the screen width/height based on
-    // the input size, that is, it's going to become a bit smaller
-    // If the default screen size is not divisible with the input size
-    
     auto size_from_terrain_data(
         const Terrain_data&,
         Sdl::Point snap, 
@@ -37,7 +33,8 @@ namespace Maze_cracker
         Sdl::Screen&, 
         Sdl::Point draw_point,
         Sdl::Point snap,
-        SDL_Color) -> void;
+        SDL_Color, 
+        Sdl::Color_filling = Sdl::Color_filling::Filled) -> void;
 }
 
 #endif

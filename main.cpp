@@ -6,11 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
-#include "cached.h"
-
-// TODO
-
-// TODO fix modularity
 
 class Bad_arguments : public std::exception { };
 
@@ -52,14 +47,14 @@ int main(int argc, char** argv)
                                   .process_lines()
                                   .finalize();
         
-        Control _ { };
+        Sdl_system_control _ { };
         
         Screen_properties props { };
         
         Sdl::Point snap = snap_from_terrain_data(terrain_data);
         size_from_terrain_data(terrain_data, snap, props);
         
-        props.title = "TRN";
+        props.title = " ";
         props.position.x = SDL_WINDOWPOS_UNDEFINED;
         props.position.y = SDL_WINDOWPOS_UNDEFINED;
         
@@ -69,7 +64,7 @@ int main(int argc, char** argv)
         Results results { };
         App_state state { App_state::Checking };
         
-        Main_loop loop
+        Basic_loop loop
         {
             [&screen, &terrain_data, &path, &snap, &results, &state]
             {
@@ -87,7 +82,7 @@ int main(int argc, char** argv)
                         
                         update_results(results, path, terrain_data);
                         
-                        SDL_Delay(10);
+                        SDL_Delay(3);
                         
                         step(path, terrain_data);
                     }
@@ -105,6 +100,13 @@ int main(int argc, char** argv)
                         terrain_data.walls_, 
                         snap,
                         color_black());
+                
+                draw_point_rect(
+                    screen, 
+                    terrain_data.finish_, 
+                    snap, 
+                    color_red(),
+                    Color_filling::None);
                 
                 screen.redraw(color_white());
             }
